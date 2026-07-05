@@ -1,28 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mental Wellness Articles</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1ECDD;
+    --panel: #FBF8F0;
+    --ink: #1F2E28;
+    --ink-soft: #4B5750;
+    --sage: #5E7C6D;
+    --sage-deep: #1F2E28;
+    --accent: #B14F5F;
+    --line: #CFC3A3;
+    --line-soft: #E3DAC1;
+    --radius: 2px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(31,46,40,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+    z-index: 0;
+  }
+
+  .wrap{
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 72px 28px 120px;
+  }
+
+  .masthead{
+    margin-bottom: 56px;
+  }
+
+  .eyebrow{
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 14px;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+
+  .masthead p.dek{
+    margin: 0;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .masthead-rule{
+    margin-top: 32px;
+    border: none;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Signature element: a pulse line that settles from a heartbeat spike
+     into a calm, even wave — the visual thesis of the whole page. */
+  .pulse{
+    width: 100%;
+    height: 46px;
+    margin: 40px 0 8px;
+    display: block;
+  }
+  .pulse path{
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .pulse .calm{
+    stroke: var(--sage);
+    opacity: 0.8;
+  }
+
+  article{
+    background: var(--panel);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    padding: 44px clamp(24px, 5vw, 56px);
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  article + article{
+    margin-top: 8px;
+  }
+
+  .entry-label{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .entry-number{
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .entry-tag{
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--sage);
+  }
+
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.25;
+    margin: 0 0 20px;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+
+  article p{
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    max-width: 62ch;
+  }
+
+  article p + p{
+    margin-top: 16px;
+  }
+
+  .back-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 44px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--sage-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .back-link:hover{
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .back-link:focus-visible,
+  a:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+
+  @media (max-width: 480px){
+    .wrap{ padding: 48px 18px 90px; }
+    article{ padding: 32px 20px; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>Mental Wellness Articles</h1>
+  <div class="masthead"
+    <h1>Mental Health</h1>
+    <p class="dek">Short reads on the parts of an athlete's life that never show up on the scoreboard.</p>
+    <hr class="masthead-rule">
+  </div>
 
-<h2>1. Why Mental Health Matters in Women's Sports</h2>
-<p>
-Mental health is just as important as physical health. Female athletes often face
-pressure from competition, academics, family expectations, and social media.
-Recognizing these challenges is the first step toward building resilience.
-</p>
+  <!-- Signature: heartbeat settling into a calm wave -->
+  <svg class="pulse" viewBox="0 0 600 46" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,23 L60,23 L72,6 L86,40 L98,14 L110,23 L300,23" />
+    <path class="calm" d="M300,23 C325,10 350,36 375,23 C400,10 425,36 450,23 C475,10 500,36 525,23 C550,10 575,36 600,23" />
+  </svg>
 
-<h2>2. Recognizing Burnout</h2>
-<p>
-Burnout can include constant fatigue, loss of motivation, poor performance,
-and emotional exhaustion. Early support can prevent long-term issues.
-</p>
+  <article id="article-1">
+    <div class="entry-label">
+      <span class="entry-number">01</span>
+      <span class="entry-tag">Foundations</span>
+    </div>
+    <h2>Why Mental Health Matters in Women's Sports</h2>
+    <p>
+      Mental health is just as important as physical health. Female athletes often carry
+      pressure from competition, academics, family expectations, and social media —
+      sometimes all at once, and often without anyone acknowledging how much they're holding.
+    </p>
+    <p>
+      Recognizing these challenges is the first step toward building resilience. Naming the
+      pressure doesn't make an athlete weaker; it's usually what makes the difference between
+      a career that lasts and one that quietly burns out.
+    </p>
+  </article>
 
-<a href="index.html">← Back to Home</a>
+  <article id="article-2">
+    <div class="entry-label">
+      <span class="entry-number">02</span>
+      <span class="entry-tag">Awareness</span>
+    </div>
+    <h2>Recognizing Burnout</h2>
+    <p>
+      Burnout can look like constant fatigue, a loss of motivation, dips in performance, and
+      emotional exhaustion that doesn't lift after a good night's sleep.
+    </p>
+    <p>
+      It rarely announces itself all at once — it builds quietly. Early support, from a coach,
+      a teammate, or a trusted person off the court, can prevent a short rough patch from
+      turning into a long-term issue.
+    </p>
+  </article>
 
+  <a class="back-link" href="index.html">&larr; Back to Home</a>
+
+</div>
 </body>
-</html> 
+</html>
