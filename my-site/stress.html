@@ -1,204 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stress and Anxiety Management Tips | We Mental Health</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stress and Anxiety Management Tips | We Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum: #6a4c93;
+    --plum-deep: #543b78;
+    --plum-light: #8a63b8;
+    --blush: #f4c9d6;
+    --blush-soft: #fbe7ec;
+    --rose-gold: #cf8fa3;
+    --cream: #fff9fb;
+    --ink: #3a2f42;
+    --ink-soft: #6e6178;
+    --sidebar-w: 264px;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  h1, h2 { font-family: 'Fraunces', serif; font-weight: 600; }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  .sidebar{
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w); height: 100vh;
+    background: linear-gradient(195deg, var(--plum) 0%, var(--plum-light) 100%);
+    color: white;
+    display: flex; flex-direction: column;
+    padding: 34px 22px; z-index: 100;
+  }
+  .brand{ display: flex; align-items: center; gap: 10px; margin-bottom: 46px; padding-left: 4px; }
+  .brand span{ font-family: 'Fraunces', serif; font-size: 1.28rem; font-weight: 600; line-height: 1.15; }
+  .tabs{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .tabs a{
+    all: unset; display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 13px 16px; border-radius: 30px;
+    font-size: 0.98rem; font-weight: 700; color: rgba(255,255,255,0.85);
+    cursor: pointer; transition: background 0.2s ease, color 0.2s ease; box-sizing: border-box;
+  }
+  .tabs a svg{ opacity: 0.9; flex-shrink: 0; }
+  .tabs a:hover{ background: rgba(255,255,255,0.12); color: white; }
+  .tabs a.active{ background: var(--blush-soft); color: var(--plum-deep); }
+  .sidebar-footer{ margin-top: auto; padding-left: 4px; font-size: 0.8rem; color: rgba(255,255,255,0.65); }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8f5fb;
-    }
+  main{ margin-left: var(--sidebar-w); min-height: 100vh; }
 
-    header {
-      background: #6a4c93;
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
-    }
+  .page-hero{
+    position: relative; overflow: hidden;
+    background: radial-gradient(120% 140% at 15% 0%, var(--blush) 0%, var(--cream) 60%);
+    padding: 64px 60px 50px;
+  }
+  .page-hero .blob{
+    position: absolute; top: -80px; right: -60px; width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(207,143,163,0.35));
+  }
+  .page-hero h1{ position: relative; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--plum-deep); margin: 0 0 12px; max-width: 20ch; }
+  .page-hero p{ position: relative; max-width: 56ch; font-size: 1.05rem; color: var(--ink-soft); }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
+  .content{ padding: 40px 60px 90px; max-width: 900px; }
 
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
+  .accordion-item{
+    background: white; border-radius: 18px; margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(106,76,147,0.07); border: 1px solid #f1e4ea; overflow: hidden;
+  }
+  .accordion-header{
+    all: unset; display: flex; align-items: center; gap: 16px;
+    width: 100%; padding: 24px 28px; cursor: pointer; box-sizing: border-box;
+  }
+  .accordion-header .num{
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 34px; height: 34px; padding: 0 10px;
+    background: var(--blush-soft); color: var(--rose-gold);
+    font-weight: 800; font-size: 0.82rem; border-radius: 20px; flex-shrink: 0;
+  }
+  .accordion-header .title{ flex: 1; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.18rem; color: var(--plum); }
+  .accordion-header .chevron{ flex-shrink: 0; width: 22px; height: 22px; color: var(--rose-gold); transition: transform 0.25s ease; }
+  .accordion-item.open .chevron{ transform: rotate(180deg); }
 
-    nav {
-      background: white;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+  .accordion-panel{ max-height: 0; overflow: hidden; transition: max-height 0.32s ease; }
+  .accordion-panel-inner{ padding: 0 28px 26px 78px; }
+  .accordion-panel-inner p{ color: var(--ink-soft); max-width: 66ch; }
+  .accordion-panel-inner ul{ margin-top: 12px; padding-left: 20px; color: var(--ink-soft); max-width: 62ch; }
+  .accordion-panel-inner li{ margin-bottom: 8px; }
 
-    nav a {
-      color: #6a4c93;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-    }
+  .button{
+    display: inline-block; margin-top: 8px; background: var(--plum); color: white;
+    padding: 13px 28px; text-decoration: none; border-radius: 30px; font-weight: 700;
+    box-shadow: 0 8px 20px rgba(106,76,147,0.28); transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .button:hover{ background: var(--plum-deep); transform: translateY(-1px); }
 
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+  footer{ background: var(--plum); color: rgba(255,255,255,0.85); text-align: center; padding: 24px; font-size: 0.9rem; }
 
-    .card {
-      background: white;
-      padding: 30px;
-      margin: 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .card p {
-      margin-top: 12px;
-    }
-
-    .card ul {
-      margin-top: 12px;
-      padding-left: 20px;
-    }
-
-    .card li {
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      color: #6a4c93;
-      margin-bottom: 15px;
-    }
-
-    .tip-number {
-      display: inline-block;
-      background: #6a4c93;
-      color: white;
-      font-size: 0.85rem;
-      font-weight: bold;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      background: #6a4c93;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    .button:hover {
-      background: #56407a;
-    }
-
-    footer {
-      background: #6a4c93;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-  </style>
+  @media (max-width: 880px){
+    .sidebar{ position: static; width: 100%; height: auto; flex-direction: row; align-items: center; padding: 16px 18px; gap: 18px; overflow-x: auto; }
+    .brand{ margin-bottom: 0; }
+    .brand span{ font-size: 1.05rem; }
+    .tabs{ flex-direction: row; gap: 6px; }
+    .tabs a{ padding: 10px 14px; white-space: nowrap; }
+    .sidebar-footer{ display: none; }
+    main{ margin-left: 0; }
+    .page-hero{ padding: 40px 22px 32px; }
+    .content{ padding: 30px 22px 70px; }
+    .accordion-panel-inner{ padding-left: 28px; }
+  }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>Stress and Anxiety Management Tips</h1>
-  <p>
-    Simple, practical tools female athletes can use before, during, and after competition.
-  </p>
-</header>
+<div class="sidebar">
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <path d="M15 26C15 26 4 19.5 4 11.8C4 7.7 7.2 5 10.6 5C12.6 5 14.3 6 15 7.6C15.7 6 17.4 5 19.4 5C22.8 5 26 7.7 26 11.8C26 19.5 15 26 15 26Z" fill="white" fill-opacity="0.95"/>
+    </svg>
+    <span>We Mental<br>Health</span>
+  </div>
+  <ul class="tabs">
+    <li><a href="index.html#about"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>About</a></li>
+    <li><a href="index.html#mission"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg>Mission</a></li>
+    <li><a href="index.html#resources" class="active"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4a1 1 0 0 0-1-1H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M6.5 17H20v3H6.5a1.5 1.5 0 0 1 0-3z"/></svg>Resources</a></li>
+    <li><a href="index.html#contact"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a></li>
+  </ul>
+  <div class="sidebar-footer">Supporting women in sport, one mind at a time.</div>
+</div>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="articles.html">Articles</a>
-  <a href="index.html#resources">Resources</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
-
-<section>
-
-  <div class="card">
-    <span class="tip-number">Tip 1</span>
-    <h2>Control Your Breathing Before Competition</h2>
-    <p>
-      Pre-game nerves are normal, but they don't have to run the show. Slow, deliberate
-      breathing calms the nervous system fast.
-    </p>
-    <ul>
-      <li>Inhale for 4 seconds, hold for 4, exhale for 6</li>
-      <li>Repeat for 1–2 minutes before you step onto the court or field</li>
-      <li>Use it again between points or plays if nerves spike</li>
-    </ul>
+<main>
+  <div class="page-hero">
+    <div class="blob"></div>
+    <h1>Stress and Anxiety Management Tips</h1>
+    <p>Simple, practical tools you can use before, during, and after competition. Tap a tip to open it.</p>
   </div>
 
-  <div class="card">
-    <span class="tip-number">Tip 2</span>
-    <h2>Separate Performance from Self-Worth</h2>
-    <p>
-      A bad match or a missed shot is information about that moment, not a verdict on your
-      value as an athlete or a person.
-    </p>
-    <ul>
-      <li>After a mistake, name what happened factually, without judgment</li>
-      <li>Ask "what's the next useful action?" instead of "what does this say about me?"</li>
-      <li>Keep a short list of things you're proud of outside sport, and revisit it often</li>
-    </ul>
+  <div class="content">
+
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="num">01</span>
+        <span class="title">Control Your Breathing Before Competition</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <p>Pre-game nerves are normal, but they don't have to run the show. Slow, deliberate breathing calms the nervous system fast.</p>
+          <ul>
+            <li>Inhale for 4 seconds, hold for 4, exhale for 6</li>
+            <li>Repeat for 1–2 minutes before you step onto the court or field</li>
+            <li>Use it again between points or plays if nerves spike</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="num">02</span>
+        <span class="title">Separate Performance from Self-Worth</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <p>A bad match or a missed shot is information about that moment, not a verdict on your value as an athlete or a person.</p>
+          <ul>
+            <li>After a mistake, name what happened factually, without judgment</li>
+            <li>Ask "what's the next useful action?" instead of "what does this say about me?"</li>
+            <li>Keep a short list of things you're proud of outside sport, and revisit it often</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="num">03</span>
+        <span class="title">Build a Wind-Down Routine</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <p>Anxiety often spikes when the body stays "switched on" long after training or competition ends.</p>
+          <ul>
+            <li>Set a consistent post-training routine: stretch, shower, eat, then rest</li>
+            <li>Limit scrolling social media in the hour after a game, win or lose</li>
+            <li>Write down one thing that went well, even on hard days</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="num">04</span>
+        <span class="title">Know When to Ask for Support</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">
+          <p>Ongoing anxiety that doesn't ease with rest, breathing, or time off deserves more than self-management.</p>
+          <ul>
+            <li>Talk to a coach, teammate, or family member you trust</li>
+            <li>Consider speaking with a sports psychologist or counselor</li>
+            <li>Treat asking for help as a training decision, not a personal failure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="button">← Back to Home</a>
   </div>
 
-  <div class="card">
-    <span class="tip-number">Tip 3</span>
-    <h2>Build a Wind-Down Routine</h2>
-    <p>
-      Anxiety often spikes when the body stays "switched on" long after training or competition
-      ends.
-    </p>
-    <ul>
-      <li>Set a consistent post-training routine: stretch, shower, eat, then rest</li>
-      <li>Limit scrolling social media in the hour after a game, win or lose</li>
-      <li>Write down one thing that went well, even on hard days</li>
-    </ul>
-  </div>
+  <footer>
+    <p>&copy; 2026 We Mental Health. Supporting Women in Sports, One Mind at a Time.</p>
+  </footer>
+</main>
 
-  <div class="card">
-    <span class="tip-number">Tip 4</span>
-    <h2>Know When to Ask for Support</h2>
-    <p>
-      Ongoing anxiety that doesn't ease with rest, breathing, or time off deserves more than
-      self-management.
-    </p>
-    <ul>
-      <li>Talk to a coach, teammate, or family member you trust</li>
-      <li>Consider speaking with a sports psychologist or counselor</li>
-      <li>Treat asking for help as a training decision, not a personal failure</li>
-    </ul>
-  </div>
-
-  <a href="index.html" class="button">← Back to Home</a>
-
-</section>
-
-<footer>
-  <p>&copy; 2026 We Mental Health. Supporting Women in Sports, One Mind at a Time.</p>
-</footer>
+<script>
+  document.querySelectorAll('.accordion-header').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.accordion-item');
+      var panel = item.querySelector('.accordion-panel');
+      var isOpen = item.classList.contains('open');
+      if (isOpen){
+        panel.style.maxHeight = null;
+        item.classList.remove('open');
+      } else {
+        item.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
