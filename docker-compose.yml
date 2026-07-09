@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    volumes:
+      - backend_data:/app/data
+    restart: unless-stopped
+    # not published to the internet directly â€” only nginx (the "web"
+    # service) can reach it, via the docker network, at http://backend:5000
+
+volumes:
+  backend_data:
