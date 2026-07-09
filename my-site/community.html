@@ -1,1 +1,419 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Support | We Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum: #6a4c93;
+    --plum-deep: #543b78;
+    --plum-light: #8a63b8;
+    --blush: #f4c9d6;
+    --blush-soft: #fbe7ec;
+    --rose-gold: #cf8fa3;
+    --cream: #fff9fb;
+    --ink: #3a2f42;
+    --ink-soft: #6e6178;
+    --sidebar-w: 264px;
+    --alert-bg: #fff3ee;
+    --alert-border: #f3c5ae;
+    --alert-ink: #8a4a2b;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  h1, h2 { font-family: 'Fraunces', serif; font-weight: 600; }
+
+  .sidebar{
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w); height: 100vh;
+    background: linear-gradient(195deg, var(--plum) 0%, var(--plum-light) 100%);
+    color: white;
+    display: flex; flex-direction: column;
+    padding: 34px 22px; z-index: 100;
+  }
+  .brand{ display: flex; align-items: center; gap: 10px; margin-bottom: 46px; padding-left: 4px; }
+  .brand span{ font-family: 'Fraunces', serif; font-size: 1.28rem; font-weight: 600; line-height: 1.15; }
+  .tabs{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .tabs a{
+    all: unset; display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 13px 16px; border-radius: 30px;
+    font-size: 0.98rem; font-weight: 700; color: rgba(255,255,255,0.85);
+    cursor: pointer; transition: background 0.2s ease, color 0.2s ease; box-sizing: border-box;
+  }
+  .tabs a svg{ opacity: 0.9; flex-shrink: 0; }
+  .tabs a:hover{ background: rgba(255,255,255,0.12); color: white; }
+  .tabs a.active{ background: var(--blush-soft); color: var(--plum-deep); }
+  .sidebar-footer{ margin-top: auto; padding-left: 4px; font-size: 0.8rem; color: rgba(255,255,255,0.65); }
+
+  main{ margin-left: var(--sidebar-w); min-height: 100vh; }
+
+  .page-hero{
+    position: relative; overflow: hidden;
+    background: radial-gradient(120% 140% at 15% 0%, var(--blush) 0%, var(--cream) 60%);
+    padding: 64px 60px 40px;
+  }
+  .page-hero .blob{
+    position: absolute; top: -80px; right: -60px; width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(207,143,163,0.35));
+  }
+  .page-hero h1{ position: relative; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--plum-deep); margin: 0 0 12px; max-width: 22ch; }
+  .page-hero p{ position: relative; max-width: 58ch; font-size: 1.05rem; color: var(--ink-soft); }
+
+  .content{ padding: 10px 60px 90px; max-width: 900px; }
+
+  /* Safety banner */
+  .safety-banner{
+    background: var(--alert-bg);
+    border: 1px solid var(--alert-border);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 30px;
+  }
+  .safety-banner h3{
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--alert-ink);
+    margin: 0 0 10px;
+  }
+  .safety-banner p{ color: var(--alert-ink); margin: 0 0 10px; font-size: 0.96rem; }
+  .safety-banner ul{ margin: 0; padding-left: 20px; color: var(--alert-ink); font-size: 0.96rem; }
+  .safety-banner li{ margin-bottom: 6px; }
+  .safety-banner strong{ font-weight: 800; }
+
+  .card{
+    background: white;
+    border-radius: 20px;
+    padding: 34px clamp(22px, 4vw, 40px);
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(106,76,147,0.08);
+    border: 1px solid #f1e4ea;
+  }
+  .card h2{ color: var(--plum); font-size: 1.4rem; margin: 0 0 10px; }
+  .card > p.lead{ color: var(--ink-soft); margin: 0 0 20px; max-width: 66ch; }
+
+  .field-label{
+    display: block;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--plum-deep);
+    margin: 20px 0 10px;
+  }
+
+  .topic-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+  }
+
+  .topic{
+    position: relative;
+  }
+  .topic input{
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+    margin: 0;
+  }
+  .topic label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    background: var(--blush-soft);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .topic input:checked + label{
+    border-color: var(--rose-gold);
+    background: var(--blush);
+  }
+  .topic .dot{
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--rose-gold); flex-shrink: 0;
+  }
+
+  textarea, input[type="text"], input[type="email"]{
+    width: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.98rem;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #ecdde5;
+    background: var(--cream);
+    color: var(--ink);
+    resize: vertical;
+  }
+  textarea:focus, input:focus{
+    outline: none;
+    border-color: var(--rose-gold);
+  }
+
+  .checkbox-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .checkbox-row input{ width: 17px; height: 17px; accent-color: var(--rose-gold); }
+
+  .form-note{
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    line-height: 1.55;
+  }
+
+  .button{
+    display: inline-block;
+    margin-top: 22px;
+    background: var(--plum);
+    color: white;
+    padding: 13px 30px;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(106,76,147,0.28);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .button:hover{ background: var(--plum-deep); transform: translateY(-1px); }
+
+  .button.secondary{
+    background: transparent;
+    color: var(--plum);
+    box-shadow: none;
+    border: 2px solid var(--blush);
+  }
+  .button.secondary:hover{ background: var(--blush-soft); transform: none; }
+
+  footer{
+    background: var(--plum);
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 880px){
+    .sidebar{
+      position: static; width: 100%; height: auto;
+      flex-direction: row; align-items: center;
+      padding: 16px 18px; gap: 18px; overflow-x: auto;
+    }
+    .brand{ margin-bottom: 0; }
+    .brand span{ font-size: 1.05rem; }
+    .tabs{ flex-direction: row; gap: 6px; }
+    .tabs a{ padding: 10px 14px; white-space: nowrap; }
+    .sidebar-footer{ display: none; }
+    main{ margin-left: 0; }
+    .page-hero{ padding: 40px 22px 28px; }
+    .content{ padding: 6px 22px 70px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <path d="M15 26C15 26 4 19.5 4 11.8C4 7.7 7.2 5 10.6 5C12.6 5 14.3 6 15 7.6C15.7 6 17.4 5 19.4 5C22.8 5 26 7.7 26 11.8C26 19.5 15 26 15 26Z" fill="white" fill-opacity="0.95"/>
+    </svg>
+    <span>We Mental<br>Health</span>
+  </div>
+  <ul class="tabs">
+    <li><a href="index.html#about"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>About</a></li>
+    <li><a href="index.html#mission"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg>Mission</a></li>
+    <li><a href="index.html#resources" class="active"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4a1 1 0 0 0-1-1H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M6.5 17H20v3H6.5a1.5 1.5 0 0 1 0-3z"/></svg>Resources</a></li>
+    <li><a href="index.html#contact"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a></li>
+  </ul>
+  <div class="sidebar-footer">Supporting women in sport, one mind at a time.</div>
+</div>
+
+<main>
+  <div class="page-hero">
+    <div class="blob"></div>
+    <h1>Community Support</h1>
+    <p>A space to tell someone what's actually going on. Every voice here matters, and you don't have to have the right words to reach out.</p>
+  </div>
+
+  <div class="content">
+
+    <div class="safety-banner">
+      <h3>If you are in danger right now, please don't wait on this form</h3>
+      <p>This page is not monitored around the clock, and messages sent through it are not a police report or an official complaint. Select your country to see real local resources:</p>
+      <label class="field-label" for="country-select" style="color: var(--alert-ink);">Your country</label>
+      <select id="country-select" style="width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--alert-border); background:white; font-family:'Nunito Sans',sans-serif; font-size:0.95rem; margin-bottom:14px;">
+        <option value="NG">Nigeria</option>
+        <option value="ES">Spain</option>
+        <option value="GLOBAL">Other / not listed</option>
+      </select>
+      <ul id="resource-list">
+        <li>Loading resources...</li>
+      </ul>
+    </div>
+
+
+    <div class="card">
+      <h2>Tell Us What's Affecting You</h2>
+      <p class="lead">
+        Choose whatever applies, share as much or as little as you're comfortable with, and let us know how to reach you if you'd like a response. Submitting this opens your email app with your message ready to send to us directly — nothing is posted publicly.
+      </p>
+
+      <form id="support-form">
+        <span class="field-label">What's affecting you? (select all that apply)</span>
+        <div class="topic-grid">
+          <div class="topic">
+            <input type="checkbox" id="t1" name="topic" value="Sexual abuse (coach, colleagues, home, or senior players)">
+            <label for="t1"><span class="dot"></span>Sexual abuse</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t2" name="topic" value="Physical abuse (coach, colleagues, home, or senior players)">
+            <label for="t2"><span class="dot"></span>Physical abuse</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t3" name="topic" value="Anxiety">
+            <label for="t3"><span class="dot"></span>Anxiety</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t4" name="topic" value="Pressure">
+            <label for="t4"><span class="dot"></span>Pressure</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t5" name="topic" value="Depression">
+            <label for="t5"><span class="dot"></span>Depression</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t6" name="topic" value="Personal / family issues">
+            <label for="t6"><span class="dot"></span>Personal / family issues</label>
+          </div>
+          <div class="topic">
+            <input type="checkbox" id="t7" name="topic" value="Career decisions">
+            <label for="t7"><span class="dot"></span>Career decisions</label>
+          </div>
+        </div>
+
+        <label class="field-label" for="details">Tell us more (optional, share only what feels safe)</label>
+        <textarea id="details" rows="6" placeholder="You can write as much or as little as you want..."></textarea>
+
+        <label class="field-label" for="contact-name">Your name (optional)</label>
+        <input type="text" id="contact-name" placeholder="Leave blank to stay anonymous">
+
+        <label class="field-label" for="contact-email">Email or phone, if you'd like a response (optional)</label>
+        <input type="text" id="contact-email" placeholder="Only if you want us to reach back out">
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="anonymous">
+          <label for="anonymous">I'd prefer to stay completely anonymous</label>
+        </div>
+
+        <p class="form-note">
+          Your message is sent securely and stored encrypted -- only we can read it. We read every message personally, but we are not a crisis service or a licensed clinic, and this is not a substitute for contacting the emergency resources above if you're in immediate danger.
+        </p>
+        <p id="form-status" class="form-note" style="display:none; font-weight:700;"></p>
+
+        <button type="submit" class="button" id="submit-btn">Send Securely</button>
+      </form>
+    </div>
+
+    <a href="index.html" class="button secondary">← Back to Home</a>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 We Mental Health. Supporting Women in Sports, One Mind at a Time.</p>
+  </footer>
+</main>
+
+<script>
+  var countrySelect = document.getElementById('country-select');
+  var resourceList = document.getElementById('resource-list');
+
+  function loadResources(country){
+    resourceList.innerHTML = '<li>Loading resources...</li>';
+    fetch('/api/resources?country=' + encodeURIComponent(country))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        resourceList.innerHTML = data.resources.map(function(item){
+          return '<li><strong>' + item.name + ':</strong> ' + item.phone +
+                 (item.notes ? ' — ' + item.notes : '') + '</li>';
+        }).join('');
+      })
+      .catch(function(){
+        resourceList.innerHTML = '<li>Could not load resources right now. If you are in immediate danger, contact your local emergency services.</li>';
+      });
+  }
+
+  countrySelect.addEventListener('change', function(){
+    loadResources(countrySelect.value);
+  });
+  loadResources(countrySelect.value);
+
+  document.getElementById('support-form').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var topics = Array.from(document.querySelectorAll('input[name="topic"]:checked'))
+                       .map(function(t){ return t.value; });
+    var details = document.getElementById('details').value.trim();
+    var name = document.getElementById('contact-name').value.trim();
+    var contact = document.getElementById('contact-email').value.trim();
+    var anonymous = document.getElementById('anonymous').checked;
+    var country = countrySelect.value;
+
+    var status = document.getElementById('form-status');
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch('/api/support', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topics: topics, details: details, name: name, contact: contact, anonymous: anonymous, country: country })
+    })
+      .then(function(r){ return r.json().then(function(body){ return { ok: r.ok, body: body }; }); })
+      .then(function(res){
+        status.style.display = 'block';
+        if (res.ok){
+          status.style.color = '#4a7a5f';
+          status.textContent = 'Your message was sent securely. Thank you for trusting us with this.';
+          document.getElementById('support-form').reset();
+        } else {
+          status.style.color = '#b14f5f';
+          status.textContent = res.body.error || 'Something went wrong. Please try again.';
+        }
+      })
+      .catch(function(){
+        status.style.display = 'block';
+        status.style.color = '#b14f5f';
+        status.textContent = 'Could not reach the server. Please check your connection and try again.';
+      })
+      .finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'Send Securely';
+      });
+  });
+</script>
+
+</body>
+</html>
