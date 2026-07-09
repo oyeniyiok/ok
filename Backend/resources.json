@@ -1,0 +1,29 @@
+{
+  "NG": {
+    "label": "Nigeria",
+    "resources": [
+      {"name": "Federal Govt Toll-Free Line — Violence Against Women & Girls", "phone": "0800 72 73 2255", "notes": "Free, national"},
+      {"name": "Lagos DSVRT (Domestic & Sexual Violence Response Team)", "phone": "0800 033 3333", "notes": "Free, Lagos State"},
+      {"name": "Mirabel Centre (LASUTH) — Sexual Assault Referral Centre", "phone": "0815 577 0000", "notes": "Lagos, medical + legal support"},
+      {"name": "Cece Yara Foundation — Child Abuse Helpline", "phone": "+234 908 569 2612", "notes": "24/7, specifically for children"},
+      {"name": "Safe Haven Foundation", "phone": "0911 001 9999", "notes": "Confidential, anonymous reporting supported"},
+      {"name": "Mentally Aware Nigeria Initiative (MANI)", "phone": "See mentallyaware.org", "notes": "24/7 mental health support line"}
+    ]
+  },
+  "ES": {
+    "label": "Spain",
+    "resources": [
+      {"name": "Emergency services (EU-wide)", "phone": "112", "notes": ""},
+      {"name": "ANAR — helpline for minors", "phone": "900 20 20 10", "notes": "Free, confidential, 24/7"},
+      {"name": "016 — gender-based violence line", "phone": "016", "notes": "Free, confidential, doesn't show on phone bill"}
+    ]
+  },
+  "GLOBAL": {
+    "label": "Other / Not listed",
+    "resources": [
+      {"name": "Child Helpline International directory", "phone": "childhelplineinternational.org", "notes": "Search for your country's child helpline"},
+      {"name": "Find A Helpline directory", "phone": "findahelpline.com", "notes": "Search by country and topic (abuse, anxiety, depression, etc.)"},
+      {"name": "Local emergency services", "phone": "Varies by country", "notes": "If you are in immediate danger, contact local police or emergency services directly"}
+    ]
+  }
+}
