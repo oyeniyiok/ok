@@ -51,10 +51,10 @@ jobs:
           script: |
             aws ecr get-login-password --region us-east-1 | \
             docker login --username AWS --password-stdin \
-            ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+            ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/oyeniyiok:latest
 
             docker pull \
-            ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:latest
+            ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/oyeniyiok:latest
 
             docker stop flask-backend || true
             docker rm flask-backend || true
