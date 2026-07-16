@@ -66,4 +66,4 @@ jobs:
               -e ENCRYPTION_KEY="${{ secrets.ENCRYPTION_KEY }}" \
               -e ADMIN_USERNAME="${{ secrets.ADMIN_USERNAME }}" \
               -e ADMIN_PASSWORD_HASH="${{ secrets.ADMIN_PASSWORD_HASH }}" \
-              ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/$ECR_REPOSITORY:latest
+              "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/oyeniyiok:latest"
