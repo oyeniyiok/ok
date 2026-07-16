@@ -1,0 +1,10 @@
+ok
+
+frontend
+    css
+        style.css
+
+    js
+        script.js
+
+    index.html
